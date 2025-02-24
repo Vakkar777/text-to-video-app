@@ -10,3 +10,6 @@ npm install gh-pages --save-dev
     // ... other scripts
   }
 }
+{
+  "proxy": "http://localhost:5000"  // Points to the Flask backend
+}
