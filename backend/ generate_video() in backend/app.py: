@@ -1,0 +1,14 @@
+from diffusers import StableVideoDiffusionPipeline
+import torch
+
+def generate_video(prompt):
+    pipe = StableVideoDiffusionPipeline.from_pretrained(
+        "stabilityai/stable-video-diffusion",
+        torch_dtype=torch.float16,
+        variant="fp16"
+    )
+    pipe.enable_model_cpu_offload()  # Save GPU memory
+    frames = pipe(prompt, num_frames=24, decode_chunk_size=8).frames[0]
+    output_path = "generated_videos/output.mp4"
+    frames[0].save(output_path, save_all=True, append_images=frames[1:], loop=0)
+    return output_path
