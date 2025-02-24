@@ -1,0 +1,12 @@
+cd frontend
+npm install gh-pages --save-dev
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "homepage": "https://YOUR_GITHUB_USERNAME.github.io/text-to-video-app",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    // ... other scripts
+  }
+}
